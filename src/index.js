@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AuthContextWrapper from './state/AuthContextWrapper'
+import {Provider} from "react-redux";
+import createStore from "./state/store"
 
+console.log(createStore)
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      {/* <AuthContextWrapper>*/}
+        <Provider store={createStore()}> 
+          <App />
+        </Provider>
+      {/* </AuthContextWrapper> */}
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
